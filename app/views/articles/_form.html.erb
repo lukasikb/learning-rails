@@ -1,0 +1,21 @@
+<%= form_with model: article do |form| %>
+  <div>
+    <%= form.label :title, :class => "str" %><br>
+    <%= form.text_field :title, :class => "comm" %>
+    <% article.errors.full_messages_for(:title).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :description, :class => "str" %><br>
+    <%= form.text_area :description, :class => "comm" %><br>
+    <% article.errors.full_messages_for(:description).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit :class => "btn btn-dark" %>
+  </div>
+<% end %>

@@ -1,0 +1,13 @@
+<%= form_with model: [ @article, @article.comments.build ] do |form| %>
+  <p>
+    <%= form.label :commenter, :class => "str" %><br>
+    <%= form.text_field :commenter, :class => "comm" %>
+  </p>
+  <p>
+    <%= form.label :body, :class => "str" %><br>
+    <%= form.text_area :body, :class => "comm" %>
+  </p>
+  <p>
+    <%= form.submit class: "btn btn-dark"%>
+  </p>
+<% end %>

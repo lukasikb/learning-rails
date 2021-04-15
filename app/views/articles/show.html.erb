@@ -2,22 +2,29 @@
   <div class="card-body">
     <h5 class="card-title"><%= @article.title %></h5>
     <p class="card-text"><%= @article.description %></p>
+    <div><%= link_to "Edit", edit_article_path(@article), class:"btn btn-secondary" %>
+<%= link_to "Destroy",article_path(@article),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" }, class:"btn btn-secondary" %></div>
   </div>
 </div>
 
-<%= link_to "Edit", edit_article_path(@article), class:"btn btn-dark" %>
-<%= link_to "Destroy",article_path(@article),
-                  method: :delete,
-                  data: { confirm: "Are you sure?" }, class:"btn btn-dark" %>
+<br/><br/><br/>
+<div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+  <div class="card-header"><h5>Add a comment:</h5></div>
+  <div class="card-body">
+    <h6 class="card-title"><%= render 'comments/form' %></h6>
+    <p class="card-text"></p>
+  </div>
+</div>
 
 
-<h2>Add a comment:</h2>
-<%= render 'comments/form' %>
-
-<h2>Comments:</h2>
-<%= render @article.comments %>
-
-
-
+<div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+  <div class="card-header"><h5>Comments:</h5></div>
+  <div class="card-body">
+    <h6 class="card-title"><%= render @article.comments %></h6>
+    <p class="card-text"></p>
+  </div>
+</div>
 
 

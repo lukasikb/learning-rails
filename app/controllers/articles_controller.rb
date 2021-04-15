@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
   # GET /articles or /articles.json
+  http_basic_authenticate_with name: "first", password: "website", except: [:index, :show]
+
   def index
     @articles = Article.all
   end

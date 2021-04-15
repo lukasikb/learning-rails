@@ -23,10 +23,10 @@ body{
     background-color: gray;
 }
 .comm{
-    background-color: #282828; color: white;
+    background-color: grey; color: black;
 }
 .str{
-    color: black;
+    color: white;
 }
 .articles{
     color: white; text-decoration: none;

@@ -9,7 +9,15 @@
   </div>
 </div>
 
-<br/><br/><br/>
+<br/><br/>
+<div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+  <div class="card-header"><h5>Comments:</h5></div>
+  <div class="card-body">
+    <h6 class="card-title"><%= render @article.comments %></h6>
+    <p class="card-text"></p>
+  </div>
+</div>
+
 <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
   <div class="card-header"><h5>Add a comment:</h5></div>
   <div class="card-body">
@@ -19,12 +27,5 @@
 </div>
 
 
-<div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-  <div class="card-header"><h5>Comments:</h5></div>
-  <div class="card-body">
-    <h6 class="card-title"><%= render @article.comments %></h6>
-    <p class="card-text"></p>
-  </div>
-</div>
 
 

@@ -14,10 +14,10 @@
  *= require_self
  */
 .links{
-    color: gray; text-decoration: none;
+    color: white; text-decoration: none;
 }
 .links:hover{
-    color: whitesmoke;
+    color: grey;
 }
 body{
     background-color: gray;
@@ -30,4 +30,7 @@ body{
 }
 .articles{
     color: white; text-decoration: none;
+}
+.articles:hover{
+    color: grey; text-decoration: none;
 }

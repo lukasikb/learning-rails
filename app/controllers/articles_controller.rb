@@ -1,7 +1,5 @@
 class ArticlesController < ApplicationController
-  # GET /articles or /articles.json
-  http_basic_authenticate_with name: "first", password: "website", except: [:index, :show]
-
+  
   def index
     @articles = Article.all
   end
@@ -52,6 +50,6 @@ class ArticlesController < ApplicationController
   
   private
     def article_params
-      params.require(:article).permit(:title, :description, :status)
+      params.require(:article).permit(:title, :description)
     end
 end

@@ -2,7 +2,7 @@ require "test_helper"
 
 class ArticlesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @article = articles(:one)
+    @article = articles(:two)
   end
 
   test "should get index" do
@@ -15,34 +15,47 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should create article" do
-    assert_difference('Article.count') do
-      post articles_url, params: { article: { description: @article.description, title: @article.title } }
-    end
-
-    assert_redirected_to article_url(Article.last)
-  end
-
-  test "should show article" do
-    get article_url(@article)
+  test "should get show" do
+    post = articles(:one)
+    get "/articles/#{post.id}"
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_article_url(@article)
+    post = articles(:one)
+    get "/articles/#{post.id}/edit"
     assert_response :success
   end
 
-  test "should update article" do
-    patch article_url(@article), params: { article: { description: @article.description, title: @article.title } }
-    assert_redirected_to article_url(@article)
+
+  test "should create article" do
+    assert_difference("Article.count") do
+      post articles_url, params: { article: { description: "Rails is awesome!", title: "Hello Rails" } }
+    end
+  
+    assert_redirected_to article_path(Article.last)
   end
 
-  test "should destroy article" do
-    assert_difference('Article.count', -1) do
-      delete article_url(@article)
+  test "should save article" do
+    assert Article.new(title: @article.title, description: @article.description).save
+  end
+
+
+  test "should delete article" do
+    article = articles(:two)
+    assert_difference("Article.count", -1) do
+      delete article_path(article)
+    end
+  end
+
+
+  test "should update article" do
+    article = articles(:one)
+    patch article_path(article), params: { article: { description: "Updated", title: "Hello Rails" } }
+    assert_redirected_to article
+
+    article.reload
+    assert_equal "Updated", article.description
     end
 
-    assert_redirected_to articles_url
-  end
 end

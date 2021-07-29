@@ -46,6 +46,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_difference("Article.count", -1) do
       delete article_path(article)
     end
+    assert_redirected_to root_path
   end
 
 

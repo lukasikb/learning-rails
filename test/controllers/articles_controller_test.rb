@@ -2,7 +2,7 @@ require "test_helper"
 
 class ArticlesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @article = articles(:two)
+    @article = articles(:one)
   end
 
   test "should get index" do
@@ -16,14 +16,12 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get show" do
-    post = articles(:one)
-    get "/articles/#{post.id}"
+    get article_path(:id => @article.id )
     assert_response :success
   end
 
   test "should get edit" do
-    post = articles(:one)
-    get "/articles/#{post.id}/edit"
+    get edit_article_path(:id => @article.id)
     assert_response :success
   end
 
@@ -42,21 +40,19 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
 
 
   test "should delete article" do
-    article = articles(:two)
     assert_difference("Article.count", -1) do
-      delete article_path(article)
+      delete article_path(@article)
     end
     assert_redirected_to root_path
   end
 
 
   test "should update article" do
-    article = articles(:one)
-    patch article_path(article), params: { article: { description: "Updated", title: "Hello Rails" } }
-    assert_redirected_to article
+    patch article_path(@article), params: { article: { description: "Updated", title: "Hello Rails" } }
+    assert_redirected_to @article
 
-    article.reload
-    assert_equal "Updated", article.description
+    @article.reload
+    assert_equal "Updated", @article.description
     end
 
 end
